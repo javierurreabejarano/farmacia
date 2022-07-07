@@ -49,6 +49,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setResizable(true);
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -57,6 +58,11 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         jLabel1.setText("Nombre");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         tablaListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +87,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscar)
-                .addContainerGap(514, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,7 +109,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Listado", jPanel1);
@@ -114,11 +120,11 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1041, Short.MAX_VALUE)
+            .addGap(0, 757, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 537, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Mantenimiento", jPanel2);
@@ -127,7 +133,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +142,11 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        this.Listar(txtBuscar.getText());
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
