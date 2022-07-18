@@ -6,33 +6,41 @@ package presentacion;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
-import negocio.CategoriaControl;
+import negocio.ArticuloControl;
 
 /**
  *
  * @author USER
  */
-public class FrmCategoria extends javax.swing.JInternalFrame {
+public class FrmArticulo extends javax.swing.JInternalFrame {
 
-    private final CategoriaControl CONTROL;
+    private final ArticuloControl CONTROL;
     private String accion;
     private String nombreAnt;
     /**
      * Creates new form FrmCategoria
      */
-    public FrmCategoria() {
+    public FrmArticulo() {
         initComponents();
-        this.CONTROL = new CategoriaControl();
+        this.CONTROL = new ArticuloControl();
         this.Listar("");
         tabGeneral.setEnabledAt(1, false);
         this.accion="guardar";
         txtId.setVisible(false);
     }
     
+    private void ocultarColumnas(){
+        tablaListado.getColumnModel().getColumn(1).setMaxWidth(0);
+        tablaListado.getColumnModel().getColumn(1).setMinWidth(0);
+        tablaListado.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        tablaListado.getTableHeader().getColumnModel().getColumn(1).setMinWidth(0);
+    }
+    
     private void Listar(String texto){
-        tablaListado.setModel(this.CONTROL.listar(texto));
+        tablaListado.setModel(this.CONTROL.listar(texto, 10, 1));
         TableRowSorter orden = new TableRowSorter(tablaListado.getModel());
         tablaListado.setRowSorter(orden);
+        this.ocultarColumnas();
         lblTotalRegistros.setText("Mostrando " + this.CONTROL.totalMostrados() + " de un total de " + this.CONTROL.total() + " registros");
     }
     
@@ -86,7 +94,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Categorías");
+        setTitle("Artículos");
 
         tabGeneral.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -156,7 +164,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 .addComponent(btnNuevo)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnDesactivar)
@@ -181,14 +189,14 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                     .addComponent(btnNuevo)
                     .addComponent(btnEditar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDesactivar)
                         .addComponent(btnActivar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         tabGeneral.addTab("Listado", jPanel1);
@@ -239,7 +247,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(573, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +267,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(390, Short.MAX_VALUE))
         );
 
         tabGeneral.addTab("Mantenimiento", jPanel2);
@@ -313,7 +321,8 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         String resp;
         if (this.accion.equals("editar")) {
             //editar
-            resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()), txtNombre.getText(), this.nombreAnt, txtDescripcion.getText());
+            resp="OK";
+            //resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()), txtNombre.getText(), this.nombreAnt, txtDescripcion.getText());
             if ( resp.equals("OK")) {
                 this.mensajeOk("Actualizado correctamente");
                 this.limpiar();
@@ -323,7 +332,8 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 tabGeneral.setSelectedIndex(0);
             } else {
                 //guardar
-                resp=this.CONTROL.insertar(txtNombre.getText(), txtDescripcion.getText());
+                resp="OK";
+                //resp=this.CONTROL.insertar(txtNombre.getText(), txtDescripcion.getText());
                 if ( resp.equals("OK")) {
                     this.mensajeOk("Registrado correctamente");
                     this.limpiar();
