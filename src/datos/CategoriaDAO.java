@@ -52,6 +52,26 @@ public class CategoriaDAO implements CrudSimpleInterface<Categoria> {
         }
         return registros;
     }
+    
+    public List<Categoria> seleccionar() {
+        List<Categoria> registros = new ArrayList();
+        try {
+            ps = CON.conectar().prepareStatement("SELECT id,nombre FROM categoria ORDER BY nombre asc");
+            rs = ps.executeQuery();
+            while(rs.next()){
+                registros.add(new Categoria(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4)));
+            }
+            ps.close();
+            rs.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return registros;
+    }
 
     @Override
     public boolean insertar(Categoria obj) {
