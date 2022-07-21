@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package presentacion;
 
@@ -10,10 +11,10 @@ import negocio.CategoriaControl;
 
 /**
  *
- * @author USER
+ * @author JcarlosAd7
  */
 public class FrmCategoria extends javax.swing.JInternalFrame {
-
+    
     private final CategoriaControl CONTROL;
     private String accion;
     private String nombreAnt;
@@ -22,16 +23,16 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
      */
     public FrmCategoria() {
         initComponents();
-        this.CONTROL = new CategoriaControl();
-        this.Listar("");
+        this.CONTROL=new CategoriaControl();
+        this.listar("");
         tabGeneral.setEnabledAt(1, false);
         this.accion="guardar";
         txtId.setVisible(false);
     }
     
-    private void Listar(String texto){
+    private void listar(String texto){
         tablaListado.setModel(this.CONTROL.listar(texto));
-        TableRowSorter orden = new TableRowSorter(tablaListado.getModel());
+        TableRowSorter orden= new TableRowSorter(tablaListado.getModel());
         tablaListado.setRowSorter(orden);
         lblTotalRegistros.setText("Mostrando " + this.CONTROL.totalMostrados() + " de un total de " + this.CONTROL.total() + " registros");
     }
@@ -43,11 +44,11 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }
     
     private void mensajeError(String mensaje){
-        JOptionPane.showMessageDialog(this, mensaje, "Sistema",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, mensaje,"Sistema",JOptionPane.ERROR_MESSAGE);
     }
     
     private void mensajeOk(String mensaje){
-        JOptionPane.showMessageDialog(this, mensaje, "Sistema", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, mensaje,"Sistema",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -82,17 +83,16 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Categorías");
 
-        tabGeneral.setBackground(new java.awt.Color(255, 255, 255));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre:");
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +109,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
 
             }
         ));
+        tablaListado.setShowGrid(false);
         jScrollPane1.setViewportView(tablaListado);
 
         lblTotalRegistros.setText("Registros");
@@ -145,35 +146,33 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuscar)
-                .addGap(18, 18, 18)
-                .addComponent(btnNuevo)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar)
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnDesactivar)
-                .addGap(31, 31, 31)
-                .addComponent(btnActivar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 61, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnDesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActivar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,21 +180,20 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                     .addComponent(btnNuevo)
                     .addComponent(btnEditar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDesactivar)
-                        .addComponent(btnActivar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDesactivar)
+                    .addComponent(btnActivar))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         tabGeneral.addTab("Listado", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setText("Nombre *");
+        jLabel2.setText("Nombre (*)");
 
         jLabel3.setText("Descripción");
 
@@ -217,7 +215,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("* Campo obligatorio");
+        jLabel4.setText("(*) Indica que es un campo obligatorio.");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -228,38 +226,40 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar))
-                    .addComponent(txtNombre)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(39, 39, 39)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         tabGeneral.addTab("Mantenimiento", jPanel2);
@@ -268,23 +268,21 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabGeneral, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabGeneral)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabGeneral, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(tabGeneral)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        this.Listar(txtBuscar.getText());
+        this.listar(txtBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
         tabGeneral.setEnabledAt(1, true);
         tabGeneral.setEnabledAt(0, false);
         tabGeneral.setSelectedIndex(1);
@@ -300,50 +298,53 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (txtNombre.getText().length()==0 || txtNombre.getText().length()>20) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre y no debe ser mayor a 20 caracteres, es obligatorio", "Sistema", JOptionPane.WARNING_MESSAGE);
+        if (txtNombre.getText().length()==0 || txtNombre.getText().length()>20){
+            JOptionPane.showMessageDialog(this, "Debes ingresar un nombre y no debe ser mayor a 20 caracteres, es obligatorio.","Sistema", JOptionPane.WARNING_MESSAGE);
             txtNombre.requestFocus();
             return;
         }
-        if (txtDescripcion.getText().length()>255) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una descripción no mayor a 255 caracteres", "Sistema", JOptionPane.WARNING_MESSAGE);
-            txtNombre.requestFocus();
+        if (txtDescripcion.getText().length()>255){
+            JOptionPane.showMessageDialog(this, "Debes ingresar una descripción no mayor a 255 caracteres.","Sistema", JOptionPane.WARNING_MESSAGE);
+            txtDescripcion.requestFocus();
             return;
         }
         String resp;
-        if (this.accion.equals("editar")) {
-            //editar
-            resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()), txtNombre.getText(), this.nombreAnt, txtDescripcion.getText());
-            if ( resp.equals("OK")) {
+        if (this.accion.equals("editar")){
+            //Editar
+            resp=this.CONTROL.actualizar(Integer.parseInt(txtId.getText()),txtNombre.getText(),this.nombreAnt, txtDescripcion.getText());
+            if(resp.equals("OK")){
                 this.mensajeOk("Actualizado correctamente");
                 this.limpiar();
-                this.Listar("");
-                tabGeneral.setEnabledAt(0, true);
-                tabGeneral.setEnabledAt(1, false);
+                this.listar("");                
                 tabGeneral.setSelectedIndex(0);
-            } else {
-                //guardar
-                resp=this.CONTROL.insertar(txtNombre.getText(), txtDescripcion.getText());
-                if ( resp.equals("OK")) {
-                    this.mensajeOk("Registrado correctamente");
-                    this.limpiar();
-                    this.Listar("");
-                    /*tabGeneral.setEnabledAt(0, true);
-                    tabGeneral.setEnabledAt(1, false);
-                    tabGeneral.setSelectedIndex(0);*/
-                } else {
-                    this.mensajeError(resp);
-                }
+                tabGeneral.setEnabledAt(1, false);
+                tabGeneral.setEnabledAt(0, true);
+            }else{
+                this.mensajeError(resp);
+            }
+        }else{
+            //guardar
+            resp=this.CONTROL.insertar(txtNombre.getText(), txtDescripcion.getText());
+            if(resp.equals("OK")){
+                this.mensajeOk("Registrado correctamente");
+                this.limpiar();
+                this.listar("");                
+                /*tabGeneral.setSelectedIndex(0);
+                tabGeneral.setEnabledAt(1, false);
+                tabGeneral.setEnabledAt(0, true);*/
+            }else{
+                this.mensajeError(resp);
             }
         }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if (tablaListado.getSelectedRowCount()==1) {
-            String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
-            String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
-            this.nombreAnt = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
-            String descripcion = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 2));
+        if (tablaListado.getSelectedRowCount()==1){
+            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
+            String nombre= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
+            this.nombreAnt= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
+            String descripcion= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),2));
             
             txtId.setText(id);
             txtNombre.setText(nombre);
@@ -354,48 +355,46 @@ public class FrmCategoria extends javax.swing.JInternalFrame {
             tabGeneral.setSelectedIndex(1);
             this.accion="editar";
             btnGuardar.setText("Editar");
-        } else {
+        }else{
             this.mensajeError("Seleccione 1 registro a editar.");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesactivarActionPerformed
-        // TODO add your handling code here:
-        if (tablaListado.getSelectedRowCount()==1) {
-            String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
-            String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+        if (tablaListado.getSelectedRowCount() == 1) {
+            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
+            String nombre= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
             
-            if (JOptionPane.showConfirmDialog(this, "¿Desea desactivar el registro " + nombre + " ?", "Deactivar", JOptionPane.YES_NO_OPTION)==0) {
+            if(JOptionPane.showConfirmDialog(this,"Deseas desactivar el registro: " + nombre + " ?", "Desactivar", JOptionPane.YES_NO_OPTION)==0){
                 String resp=this.CONTROL.desactivar(Integer.parseInt(id));
-                if (resp.equals("OK")) {
+                if (resp.equals("OK")){
                     this.mensajeOk("Registro desactivado");
-                    this.Listar("");
-                } else {
+                    this.listar("");
+                }else{
                     this.mensajeError(resp);
                 }
-            } 
+            }
         } else {
-            this.mensajeError("Seleccione un registro a desactivar.");
+            this.mensajeError("Seleccione 1 registro a desactivar.");
         }
     }//GEN-LAST:event_btnDesactivarActionPerformed
 
     private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
-        // TODO add your handling code here:
-        if (tablaListado.getSelectedRowCount()==1) {
-            String id = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 0));
-            String nombre = String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(), 1));
+        if (tablaListado.getSelectedRowCount() == 1) {
+            String id= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),0));
+            String nombre= String.valueOf(tablaListado.getValueAt(tablaListado.getSelectedRow(),1));
             
-            if (JOptionPane.showConfirmDialog(this, "¿Desea activar el registro " + nombre + " ?", "Activar", JOptionPane.YES_NO_OPTION)==0) {
+            if(JOptionPane.showConfirmDialog(this,"Deseas activar el registro: " + nombre + " ?", "Activar", JOptionPane.YES_NO_OPTION)==0){
                 String resp=this.CONTROL.activar(Integer.parseInt(id));
-                if (resp.equals("OK")) {
+                if (resp.equals("OK")){
                     this.mensajeOk("Registro activado");
-                    this.Listar("");
-                } else {
+                    this.listar("");
+                }else{
                     this.mensajeError(resp);
                 }
-            } 
+            }
         } else {
-            this.mensajeError("Seleccione un registro a activar.");
+            this.mensajeError("Seleccione 1 registro a activar.");
         }
     }//GEN-LAST:event_btnActivarActionPerformed
 

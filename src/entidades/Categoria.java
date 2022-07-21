@@ -5,19 +5,19 @@
  */
 package entidades;
 
+import java.util.Objects;
+
 /**
  *
- * @author Javier
+ * @author JcarlosAd7
  */
 public class Categoria {
-    
     private int id;
     private String nombre;
     private String descripcion;
     private boolean activo;
     
-    // Constructor
-
+    //Constructores
     public Categoria() {
         
     }
@@ -26,15 +26,16 @@ public class Categoria {
         this.id = id;
         this.nombre = nombre;
     }
-
+    
+    
     public Categoria(int id, String nombre, String descripcion, boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.activo = activo;
     }
-
-    // Metodos Setter y getter
+    
+    //Setter y getter
 
     public int getId() {
         return id;
@@ -68,13 +69,49 @@ public class Categoria {
         this.activo = activo;
     }
     
-    // Metodo toString
+    //Método toString
 
     @Override
     public String toString() {
         return nombre;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.id;
+        hash = 67 * hash + Objects.hashCode(this.nombre);
+        hash = 67 * hash + Objects.hashCode(this.descripcion);
+        hash = 67 * hash + (this.activo ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Categoria other = (Categoria) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.activo != other.activo) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        return true;
+    }
     
     
 }

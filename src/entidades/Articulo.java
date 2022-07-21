@@ -1,12 +1,13 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package entidades;
 
 /**
  *
- * @author USER
+ * @author JcarlosAd7
  */
 public class Articulo {
     private int id;
@@ -14,7 +15,7 @@ public class Articulo {
     private String categoriaNombre;
     private String codigo;
     private String nombre;
-    private double precioVenta;
+    private int precioVenta;
     private int stock;
     private String descripcion;
     private String imagen;
@@ -23,7 +24,7 @@ public class Articulo {
     public Articulo() {
     }
 
-    public Articulo(int id, int categoriaId, String categoriaNombre, String codigo, String nombre, double precioVenta, int stock, String descripcion, String imagen, boolean activo) {
+    public Articulo(int id, int categoriaId, String categoriaNombre, String codigo, String nombre, int precioVenta, int stock, String descripcion, String imagen, boolean activo) {
         this.id = id;
         this.categoriaId = categoriaId;
         this.categoriaNombre = categoriaNombre;
@@ -80,7 +81,7 @@ public class Articulo {
         return precioVenta;
     }
 
-    public void setPrecioVenta(double precioVenta) {
+    public void setPrecioVenta(int precioVenta) {
         this.precioVenta = precioVenta;
     }
 
@@ -120,6 +121,4 @@ public class Articulo {
     public String toString() {
         return "Articulo{" + "id=" + id + ", categoriaId=" + categoriaId + ", categoriaNombre=" + categoriaNombre + ", codigo=" + codigo + ", nombre=" + nombre + ", precioVenta=" + precioVenta + ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen + ", activo=" + activo + '}';
     }
-    
-    
 }
